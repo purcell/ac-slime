@@ -1,6 +1,8 @@
 ;;----------------------------------------------------------------------------
 ;; An auto-complete source using slime completions
 ;;
+;; Author: Steve Purcell <steve at sanityinc dot com>
+;;
 ;; Usage:
 ;;   (require 'ac-slime)
 ;;   (add-hook 'slime-mode-hook 'set-up-slime-ac)
