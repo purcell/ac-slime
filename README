@@ -24,3 +24,6 @@ For convenience, the function set-up-slime-ac can be used to modify your
 ac-sources list:
 
 (add-hook 'slime-mode-hook 'set-up-slime-ac)
+
+To use fuzzy completion, you must install and require slime-fuzzy.el,
+which comes with the full Slime distro, but not the version in ELPA.
