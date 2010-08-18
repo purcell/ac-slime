@@ -31,12 +31,12 @@
   (setq ac-slime-current-doc nil))
 
 (defface ac-slime-menu-face
-  '((t (:background "lightgray" :foreground "darkgreen")))
+  '((t (:inherit 'ac-candidate-face)))
   "Face for slime candidate menu."
   :group 'auto-complete)
 
 (defface ac-slime-selection-face
-  '((t (:background "darkgreen" :foreground "white")))
+  '((t (:inherit 'ac-selection-face)))
   "Face for the slime selected candidate."
   :group 'auto-complete)
 
