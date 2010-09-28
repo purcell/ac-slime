@@ -12,7 +12,7 @@ will be displayed.
 Installation
 ============
 
-You must have the auto-complete installed and enabled in Slime source
+You must have auto-complete installed and enabled in Slime source
 buffers, if not globally. Then, ensure ac-slime.el is in a directory
 on your load-path.
 
