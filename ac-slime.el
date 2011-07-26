@@ -49,6 +49,7 @@
     (selection-face . ac-slime-selection-face)
     (prefix . slime-symbol-start-pos)
     (symbol . "l")
+    (match . (lambda (prefix candidates) candidates))
     (document . ac-slime-documentation))
   "Source for fuzzy slime completion")
 
