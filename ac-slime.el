@@ -15,14 +15,14 @@
 
 (defun ac-source-slime-fuzzy-candidates ()
   "Return a possibly-empty list of fuzzy completions for the symbol at point."
-  (if (slime-connected-p)
-      (let ((slime-fuzzy-completion-limit 50))
-        (mapcar 'car (car (slime-fuzzy-completions  ac-prefix))))))
+  (when (slime-connected-p)
+    (let ((slime-fuzzy-completion-limit 50))
+      (mapcar 'car (car (slime-fuzzy-completions (substring-no-properties ac-prefix)))))))
 
 (defun ac-source-slime-simple-candidates ()
   "Return a possibly-empty list of completions for the symbol at point."
-  (if (slime-connected-p)
-      (car (slime-simple-completions  ac-prefix))))
+  (when (slime-connected-p)
+    (car (slime-simple-completions (substring-no-properties ac-prefix)))))
 
 (defvar ac-slime-current-doc nil "Holds slime docstring for current symbol")
 (defun ac-slime-documentation (symbol-name)
