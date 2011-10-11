@@ -1,15 +1,17 @@
-;;----------------------------------------------------------------------------
-;; An auto-complete source using slime completions
+;;; ac-slime.el --- An auto-complete source using slime completions
 ;;
-;; Author: Steve Purcell <steve at sanityinc dot com>
+;;; Author: Steve Purcell <steve@sanityinc.com>
+;;; URL: https://github.com/purcell/ac-slime
+;;; Version: 0.1
 ;;
+;;; Commentary:
 ;; Usage:
-;;   (require 'ac-slime)
-;;   (add-hook 'slime-mode-hook 'set-up-slime-ac)
-;;   (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
-;;   (eval-after-load "auto-complete"
-;;     '(add-to-list 'ac-modes 'slime-repl-mode))
-;;----------------------------------------------------------------------------
+;;     (require 'ac-slime)
+;;     (add-hook 'slime-mode-hook 'set-up-slime-ac)
+;;     (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
+;;     (eval-after-load "auto-complete"
+;;       '(add-to-list 'ac-modes 'slime-repl-mode))
+;;
 
 (eval-when-compile (require 'cl))
 
@@ -32,16 +34,19 @@
 (defun ac-slime-init ()
   (setq ac-slime-current-doc nil))
 
+;;;###autoload
 (defface ac-slime-menu-face
   '((t (:inherit 'ac-candidate-face)))
   "Face for slime candidate menu."
   :group 'auto-complete)
 
+;;;###autoload
 (defface ac-slime-selection-face
   '((t (:inherit 'ac-selection-face)))
   "Face for the slime selected candidate."
   :group 'auto-complete)
 
+;;;###autoload
 (defvar ac-source-slime-fuzzy
   '((init . ac-slime-init)
     (candidates . ac-source-slime-fuzzy-candidates)
@@ -53,6 +58,7 @@
     (document . ac-slime-documentation))
   "Source for fuzzy slime completion")
 
+;;;###autoload
 (defvar ac-source-slime-simple
   '((init . ac-slime-init)
     (candidates . ac-source-slime-simple-candidates)
@@ -64,6 +70,7 @@
   "Source for slime completion")
 
 
+;;;###autoload
 (defun set-up-slime-ac (&optional fuzzy)
   "Add an optionally-fuzzy slime completion source to the
 front of `ac-sources' for the current buffer."
@@ -75,3 +82,4 @@ front of `ac-sources' for the current buffer."
 
 
 (provide 'ac-slime)
+;;; ac-slime.el ends here
