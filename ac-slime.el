@@ -36,13 +36,13 @@
 
 ;;;###autoload
 (defface ac-slime-menu-face
-  '((t (:inherit 'ac-candidate-face)))
+  '((t (:inherit ac-candidate-face)))
   "Face for slime candidate menu."
   :group 'auto-complete)
 
 ;;;###autoload
 (defface ac-slime-selection-face
-  '((t (:inherit 'ac-selection-face)))
+  '((t (:inherit ac-selection-face)))
   "Face for the slime selected candidate."
   :group 'auto-complete)
 
