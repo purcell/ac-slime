@@ -26,6 +26,11 @@
   (when (slime-connected-p)
     (car (slime-simple-completions (substring-no-properties ac-prefix)))))
 
+(defun ac-source-slime-case-correcting-completions (name collection)
+  (mapcar #'(lambda (completion)
+              (replace completion name))
+          (all-completions (downcase name) collection)))
+
 (defvar ac-slime-current-doc nil "Holds slime docstring for current symbol")
 (defun ac-slime-documentation (symbol-name)
   (let ((symbol-name (substring-no-properties symbol-name)))
@@ -66,7 +71,8 @@
     (selection-face . ac-slime-selection-face)
     (prefix . slime-symbol-start-pos)
     (symbol . "l")
-    (document . ac-slime-documentation))
+    (document . ac-slime-documentation)
+    (match . ac-source-slime-case-correcting-completions))
   "Source for slime completion")
 
 
