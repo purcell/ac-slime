@@ -15,6 +15,7 @@
 
 (eval-when-compile (require 'cl))
 (require 'slime)
+(require 'auto-complete)
 
 (defun ac-source-slime-fuzzy-candidates ()
   "Return a possibly-empty list of fuzzy completions for the symbol at point."
