@@ -22,8 +22,9 @@
 (defvar ac-slime-current-doc nil "Holds slime docstring for current symbol")
 
 (defun ac-slime-documentation (symbol-info)
-  (let ((symbol (substring-no-properties symbol-info)))
-    (slime-eval `(swank:documentation-symbol ,symbol))))
+  (ignore-errors
+   (let ((symbol (substring-no-properties symbol-info)))
+     (slime-eval `(swank:documentation-symbol ,symbol)))))
 
 (defun ac-slime-init ()
   (setq ac-slime-current-doc nil))
