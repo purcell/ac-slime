@@ -17,76 +17,62 @@
 (require 'slime)
 (require 'auto-complete)
 
-(defun ac-source-slime-fuzzy-candidates ()
-  "Return a possibly-empty list of fuzzy completions for the symbol at point."
-  (when (slime-connected-p)
-    (let ((slime-fuzzy-completion-limit 50))
-      (mapcar 'car (car (slime-fuzzy-completions (substring-no-properties ac-prefix)))))))
-
-(defun ac-source-slime-simple-candidates ()
-  "Return a possibly-empty list of completions for the symbol at point."
-  (when (slime-connected-p)
-    (car (slime-simple-completions (substring-no-properties ac-prefix)))))
-
-(defun ac-source-slime-case-correcting-completions (name collection)
-  (mapcar #'(lambda (completion)
-              (replace completion name))
-          (all-completions (downcase name) collection)))
-
+(defvar ac-slime-last-ac-prefix "")
+(defvar ac-slime-results nil)
 (defvar ac-slime-current-doc nil "Holds slime docstring for current symbol")
-(defun ac-slime-documentation (symbol-name)
-  (let ((symbol-name (substring-no-properties symbol-name)))
-    (slime-eval `(swank:documentation-symbol ,symbol-name))))
+
+(defun ac-slime-documentation (symbol-info)
+  (ignore-errors
+   (let ((symbol (substring-no-properties symbol-info)))
+     (slime-eval `(swank:documentation-symbol ,symbol)))))
 
 (defun ac-slime-init ()
   (setq ac-slime-current-doc nil))
 
 ;;;###autoload
 (defface ac-slime-menu-face
-  '((t (:inherit ac-candidate-face)))
+    '((t (:inherit 'ac-candidate-face)))
   "Face for slime candidate menu."
   :group 'auto-complete)
 
 ;;;###autoload
 (defface ac-slime-selection-face
-  '((t (:inherit ac-selection-face)))
+    '((t (:inherit 'ac-selection-face)))
   "Face for the slime selected candidate."
   :group 'auto-complete)
 
-;;;###autoload
-(defvar ac-source-slime-fuzzy
-  '((init . ac-slime-init)
-    (candidates . ac-source-slime-fuzzy-candidates)
+(defun ac-source-slime-candidates (&optional flags)
+  (update-results)
+  (gethash flags ac-slime-table))
+
+(defun update-results ()
+  (cond ((not (string= ac-prefix ac-slime-last-ac-prefix))
+	 (setq ac-slime-results (car 
+				 (if ac-use-fuzzy 
+				     (slime-fuzzy-completions (substring-no-properties ac-prefix))
+				     (slime-simple-completions (substring-no-properties ac-prefix)))))
+	 (setq ac-slime-last-ac-prefix ac-prefix)
+	 (setf ac-slime-table (make-hash-table :test 'equal))
+	 (mapcar #'(lambda (item)
+		     (push (car item) (gethash (car (last item)) ac-slime-table))
+		     (setq ac-sources (add-to-list 'ac-sources (make-ac-slime-source (car (last item))))))
+		 ac-slime-results))))
+
+(defun make-ac-slime-source (flags)
+  `((init . ac-slime-init)
+    (candidates . (lambda () (ac-source-slime-candidates ,flags)))
     (candidate-face . ac-slime-menu-face)
     (selection-face . ac-slime-selection-face)
     (prefix . slime-symbol-start-pos)
-    (symbol . "l")
+    (symbol . ,flags)
     (match . (lambda (prefix candidates) candidates))
-    (document . ac-slime-documentation))
-  "Source for fuzzy slime completion")
+    (document . ac-slime-documentation)))
 
-;;;###autoload
-(defvar ac-source-slime-simple
-  '((init . ac-slime-init)
-    (candidates . ac-source-slime-simple-candidates)
-    (candidate-face . ac-slime-menu-face)
-    (selection-face . ac-slime-selection-face)
-    (prefix . slime-symbol-start-pos)
-    (symbol . "l")
-    (document . ac-slime-documentation)
-    (match . ac-source-slime-case-correcting-completions))
-  "Source for slime completion")
-
-
-;;;###autoload
 (defun set-up-slime-ac (&optional fuzzy)
   "Add an optionally-fuzzy slime completion source to the
 front of `ac-sources' for the current buffer."
   (interactive)
-  (add-to-list 'ac-sources
-               (if fuzzy
-                   'ac-source-slime-fuzzy
-                 'ac-source-slime-simple)))
+  (setq ac-sources (add-to-list 'ac-sources (make-ac-slime-source nil))))
 
 
 (provide 'ac-slime)
