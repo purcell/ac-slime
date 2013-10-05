@@ -8,6 +8,10 @@ interactive auto-completion framework
 Where slime provides it, pop-up documentation for completed symbols
 will be displayed.
 
+Screenshot
+==========
+
+![ac-slime screenshot](screenshot.png)
 
 Installation
 =============
