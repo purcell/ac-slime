@@ -21,7 +21,8 @@
 (require 'slime)
 (require 'auto-complete)
 
-(defgroup ac-slime
+(defgroup ac-slime nil
+  "Slime auto-complete customizations"
   :prefix "ac-slime-"
   :group 'slime)
 
