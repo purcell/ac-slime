@@ -5,7 +5,7 @@
 ;; Author: Steve Purcell <steve@sanityinc.com>
 ;; URL: https://github.com/purcell/ac-slime
 ;; Version: DEV
-;; Package-Requires: ((auto-complete "1.4") (slime "2.9"))
+;; Package-Requires: ((auto-complete "1.4") (slime "2.9") (cl-lib "0.5")
 
 ;; This file is not part of GNU Emacs.
 
@@ -35,7 +35,7 @@
 
 ;;; Code:
 
-(require 'cl)
+(require 'cl-lib)
 (require 'slime)
 (require 'auto-complete)
 
@@ -68,7 +68,7 @@
 (defun ac-source-slime-case-correcting-completions (name collection)
   (mapcar #'(lambda (completion)
               ;; FIXME
-              (replace completion name))
+              (cl-replace completion name))
           (all-completions (downcase name) collection)))
 
 (defvar ac-slime-current-doc nil "Holds slime docstring for current symbol.")
