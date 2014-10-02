@@ -1,8 +1,9 @@
 ;;; ac-slime.el --- An auto-complete source using slime completions
 ;;
-;;; Author: Steve Purcell <steve@sanityinc.com>
-;;; URL: https://github.com/purcell/ac-slime
-;;; Version: DEV
+;; Author: Steve Purcell <steve@sanityinc.com>
+;; URL: https://github.com/purcell/ac-slime
+;; Version: DEV
+;; Package-Requires: ((auto-complete "1.4") (slime "2.9"))
 ;;
 ;;; Commentary:
 
