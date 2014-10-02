@@ -5,7 +5,7 @@
 ;; Author: Steve Purcell <steve@sanityinc.com>
 ;; URL: https://github.com/purcell/ac-slime
 ;; Version: DEV
-;; Package-Requires: ((auto-complete "1.4") (slime "2.9") (cl-lib "0.5")
+;; Package-Requires: ((auto-complete "1.4") (slime "2.9") (cl-lib "0.5"))
 
 ;; This file is not part of GNU Emacs.
 
