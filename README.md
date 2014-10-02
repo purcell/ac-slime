@@ -17,7 +17,10 @@ Installation
 =============
 
 First, ensure `auto-complete` and `slime` are installed: I recommend
-using packages from [Marmalade][marmalade] or [Melpa][melpa].
+using packages from [Marmalade][marmalade] or [Melpa][melpa]. `cl-lib`
+is also required -- it's built into recent Emacs versions, and a
+backport package is available in [GNU ELPA](http://elpa.gnu.org/) for users
+of older Emacs versions.
 
 You'll need both `auto-complete` and `slime` to be enabled and
 working, so please consult the corresponding documentation is you have
