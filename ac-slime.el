@@ -103,7 +103,7 @@
 
 ;;;###autoload
 (defun set-up-slime-ac (&optional fuzzy)
-  "Add an optionally-fuzzy slime completion source to `ac-sources'."
+  "Add an optionally FUZZY slime completion source to `ac-sources'."
   (interactive)
   (add-to-list 'ac-sources
                (if fuzzy
