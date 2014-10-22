@@ -1,3 +1,6 @@
+[![Melpa Status](http://melpa.milkbox.net/packages/ac-slime-badge.svg)](http://melpa.milkbox.net/#/ac-slime)
+[![Melpa Stable Status](http://melpa-stable.milkbox.net/packages/ac-slime-badge.svg)](http://melpa-stable.milkbox.net/#/ac-slime)
+
 Slime completion source for Emacs auto-complete package
 =======================================================
 
