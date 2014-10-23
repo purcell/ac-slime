@@ -1,5 +1,5 @@
-[![Melpa Status](http://melpa.milkbox.net/packages/ac-slime-badge.svg)](http://melpa.milkbox.net/#/ac-slime)
-[![Melpa Stable Status](http://melpa-stable.milkbox.net/packages/ac-slime-badge.svg)](http://melpa-stable.milkbox.net/#/ac-slime)
+[![Melpa Status](http://melpa.org/packages/ac-slime-badge.svg)](http://melpa.org/#/ac-slime)
+[![Melpa Stable Status](http://stable.melpa.org/packages/ac-slime-badge.svg)](http://stable.melpa.org/#/ac-slime)
 
 Slime completion source for Emacs auto-complete package
 =======================================================
@@ -67,7 +67,7 @@ distro, but not the packaged version in [Marmalade][marmalade].
 
 
 [marmalade]: http://marmalade-repo.org
-[melpa]: http://melpa.milkbox.net
+[melpa]: http://melpa.org
 
 <hr>
 
