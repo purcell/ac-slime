@@ -63,7 +63,10 @@
 (defun ac-source-slime-simple-candidates ()
   "Return a possibly-empty list of completions for the symbol at point."
   (when (slime-connected-p)
-    (car (slime-simple-completions (substring-no-properties ac-prefix)))))
+    (let ((completions (slime-simple-completions (substring-no-properties ac-prefix))))
+      (if (listp (car completions))
+          (car completions)
+        completions))))
 
 (defun ac-source-slime-case-correcting-completions (name collection)
   (mapcar #'(lambda (completion)
