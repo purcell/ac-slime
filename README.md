@@ -20,7 +20,7 @@ Installation
 =============
 
 First, ensure `auto-complete` and `slime` are installed: I recommend
-using packages from [Marmalade][marmalade] or [Melpa][melpa]. `cl-lib`
+using packages from [MELPA][melpa]. `cl-lib`
 is also required -- it's built into recent Emacs versions, and a
 backport package is available in [GNU ELPA](http://elpa.gnu.org/) for users
 of older Emacs versions.
@@ -30,9 +30,8 @@ working, so please consult the corresponding documentation is you have
 any trouble with this.
 
 Next, install `ac-slime`. If you choose not to use the convenient
-package in [Melpa][melpa] and [Marmalade][marmalade], you'll need to
-add the directory containing `ac-slime.el` to your `load-path`, and
-then `(require 'ac-slime)`.
+package in [MELPA][melpa], you'll need to add the directory containing
+`ac-slime.el` to your `load-path`, and then `(require 'ac-slime)`.
 
 `ac-slime` provides a couple of `slime`-specific completion sources,
 so `auto-complete` needs to be told to use them when `slime-mode` is
@@ -61,12 +60,11 @@ More
 `ac-slime` supports fuzzy completion -- see the comments in
 `ac-slime.el` for details. Note that to use fuzzy completion, you must
 install and require `slime-fuzzy.el`, which comes with the full Slime
-distro, but not the packaged version in [Marmalade][marmalade].
+distro.
 
 
 
 
-[marmalade]: http://marmalade-repo.org
 [melpa]: http://melpa.org
 
 <hr>
