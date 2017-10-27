@@ -1,10 +1,10 @@
 ;;; ac-slime.el --- An auto-complete source using slime completions
 
-;; Copyright (C) 2010-2014  Steve Purcell
+;; Copyright (C) 2010-2017  Steve Purcell
 
 ;; Author: Steve Purcell <steve@sanityinc.com>
 ;; URL: https://github.com/purcell/ac-slime
-;; Version: DEV
+;; Package-Version: 0
 ;; Package-Requires: ((auto-complete "1.4") (slime "2.9") (cl-lib "0.5"))
 
 ;; This file is not part of GNU Emacs.
