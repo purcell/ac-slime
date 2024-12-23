@@ -7,7 +7,7 @@ Slime completion source for Emacs auto-complete package
 
 This plugin provides a completion source for the popular Emacs
 interactive auto-completion framework
-[auto-complete](http://cx4a.org/software/auto-complete/).
+[auto-complete](https://github.com/auto-complete/auto-complete).
 
 Where slime provides it, pop-up documentation for completed symbols
 will be displayed.
